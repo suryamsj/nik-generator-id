@@ -1,4 +1,2 @@
-src/
-*.ts
 tsconfig.json
-*.json
+.vscode/
