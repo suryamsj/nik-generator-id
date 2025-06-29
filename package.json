@@ -1,6 +1,6 @@
 {
   "name": "nik-generator-id",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "exports": {
     ".": {
@@ -33,9 +33,9 @@
     "url": "git+ https://github.com/suryamsj/nik-generator-id.git"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.14",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.3.2",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.3",
+    "ts-jest": "^29.4.0",
     "typescript": "^5.8.3"
   }
 }
