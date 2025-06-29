@@ -1,0 +1,50 @@
+[
+  {
+    "code": "01",
+    "name": "Bekasi Timur"
+  },
+  {
+    "code": "02",
+    "name": "Bekasi Barat"
+  },
+  {
+    "code": "03",
+    "name": "Bekasi Utara"
+  },
+  {
+    "code": "04",
+    "name": "Bekasi Selatan"
+  },
+  {
+    "code": "05",
+    "name": "Rawalumbu"
+  },
+  {
+    "code": "06",
+    "name": "Medansatria (Medan Satria)"
+  },
+  {
+    "code": "07",
+    "name": "Bantargebang (Bantar Gebang)"
+  },
+  {
+    "code": "08",
+    "name": "Pondokgede (Pondok Gede)"
+  },
+  {
+    "code": "09",
+    "name": "Jatiasih"
+  },
+  {
+    "code": "10",
+    "name": "Jatisampurna (Jati Sampurna)"
+  },
+  {
+    "code": "11",
+    "name": "Mustikajaya (Mustika Jaya)"
+  },
+  {
+    "code": "12",
+    "name": "Pondokmelati (Pondok Melati)"
+  }
+]

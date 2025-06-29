@@ -1,37 +1,44 @@
-import rawData from './data/indonesia.json';
-import { Province, RegionData } from './types/nik';
+import provinceList from './data/provinces.json';
+import { DistrictCache, RegencyCache, RegionData } from './types/nik';
 
-const provincesRaw = rawData as Record<string, Province>;
+const regencyCache: RegencyCache = {};
+const districtCache: DistrictCache = {};
 
 export function getProvinces(): RegionData[] {
-  return Object.entries(provincesRaw).map(([name, val]) => ({
-    code: val.ID,
-    name,
-  }));
+  return provinceList;
 }
 
-export function getRegencies(provinceCode: string): RegionData[] {
-  const province = Object.entries(provincesRaw).find(([, val]) => val.ID === provinceCode);
-  if (!province) return [];
+export async function getRegencies(provinceCode: string): Promise<RegionData[]> {
+  if (regencyCache[provinceCode]) {
+    return regencyCache[provinceCode];
+  }
 
-  const regencies = province[1]['Kabupaten/Kota'];
-  return Object.entries(regencies).map(([name, val]) => ({
-    code: val.ID.split('.')[1],
-    name,
-  }));
+  try {
+    const regencyData = await import(`./data/regencies/${provinceCode}.json`);
+    regencyCache[provinceCode] = regencyData.default;
+    return regencyData.default;
+  } catch (error) {
+    console.error(`Failed to load regency data for province ${provinceCode}`, error);
+    return [];
+  }
 }
 
-export function getDistricts(provinceCode: string, regencyCode: string): RegionData[] {
-  const province = Object.entries(provincesRaw).find(([, val]) => val.ID === provinceCode);
-  if (!province) return [];
+export async function getDistricts(provinceCode: string, regencyCode: string): Promise<RegionData[]> {
+  if (districtCache[provinceCode]?.[regencyCode]) {
+    return districtCache[provinceCode][regencyCode];
+  }
 
-  const regencies = province[1]['Kabupaten/Kota'];
-  const regency = Object.entries(regencies).find(([, val]) => val.ID.endsWith(regencyCode));
-  if (!regency) return [];
+  try {
+    const districtData = await import(`./data/districts/${provinceCode}/${regencyCode}.json`);
 
-  const districts = regency[1]['Kecamatan'];
-  return Object.entries(districts).map(([name, val]) => ({
-    code: val.ID.split('.')[2],
-    name,
-  }));
+    if (!districtCache[provinceCode]) {
+      districtCache[provinceCode] = {};
+    }
+
+    districtCache[provinceCode][regencyCode] = districtData.default;
+    return districtData.default;
+  } catch (error) {
+    console.error(`Failed to load district data for regency ${provinceCode}.${regencyCode}`, error);
+    return [];
+  }
 }

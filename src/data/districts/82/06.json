@@ -1,0 +1,42 @@
+[
+  {
+    "code": "01",
+    "name": "Wasile"
+  },
+  {
+    "code": "02",
+    "name": "Maba"
+  },
+  {
+    "code": "03",
+    "name": "Maba Selatan"
+  },
+  {
+    "code": "04",
+    "name": "Wasile Selatan"
+  },
+  {
+    "code": "05",
+    "name": "Wasile Tengah"
+  },
+  {
+    "code": "06",
+    "name": "Wasile Utara"
+  },
+  {
+    "code": "07",
+    "name": "Wasile Timur"
+  },
+  {
+    "code": "08",
+    "name": "Maba Tengah"
+  },
+  {
+    "code": "09",
+    "name": "Maba Utara"
+  },
+  {
+    "code": "10",
+    "name": "Kota Maba"
+  }
+]

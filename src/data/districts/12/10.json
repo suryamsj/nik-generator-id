@@ -1,0 +1,38 @@
+[
+  {
+    "code": "01",
+    "name": "Rantau Utara"
+  },
+  {
+    "code": "02",
+    "name": "Rantau Selatan"
+  },
+  {
+    "code": "07",
+    "name": "Bilah Barat"
+  },
+  {
+    "code": "08",
+    "name": "Bilah Hilir"
+  },
+  {
+    "code": "09",
+    "name": "Bilah Hulu"
+  },
+  {
+    "code": "14",
+    "name": "Pangkatan"
+  },
+  {
+    "code": "18",
+    "name": "Panai Tengah"
+  },
+  {
+    "code": "19",
+    "name": "Panai Hilir"
+  },
+  {
+    "code": "20",
+    "name": "Panai Hulu"
+  }
+]

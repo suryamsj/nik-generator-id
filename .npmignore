@@ -1,2 +1,4 @@
 tsconfig.json
 .vscode/
+script/
+/src/data/indonesia.json

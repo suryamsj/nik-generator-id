@@ -17,11 +17,11 @@ describe('Region Functions', () => {
   });
 
   describe('getRegencies', () => {
-    test('should return array of regencies for valid province code', () => {
+    test('should return array of regencies for valid province code', async () => {
       const provinces = getProvinces();
       const provinceCode = provinces[0].code;
 
-      const regencies = getRegencies(provinceCode);
+      const regencies = await getRegencies(provinceCode);
       expect(Array.isArray(regencies)).toBe(true);
       expect(regencies.length).toBeGreaterThan(0);
 
@@ -33,22 +33,22 @@ describe('Region Functions', () => {
       expect(typeof regency.name).toBe('string');
     });
 
-    test('should return empty array for invalid province code', () => {
-      const regencies = getRegencies('invalid-code');
+    test('should return empty array for invalid province code', async () => {
+      const regencies = await getRegencies('invalid-code');
       expect(Array.isArray(regencies)).toBe(true);
       expect(regencies.length).toBe(0);
     });
   });
 
   describe('getDistricts', () => {
-    test('should return array of districts for valid province and regency code', () => {
+    test('should return array of districts for valid province and regency code', async () => {
       const provinces = getProvinces();
       const provinceCode = provinces[0].code;
 
-      const regencies = getRegencies(provinceCode);
+      const regencies = await getRegencies(provinceCode);
       const regencyCode = regencies[0].code;
 
-      const districts = getDistricts(provinceCode, regencyCode);
+      const districts = await getDistricts(provinceCode, regencyCode);
       expect(Array.isArray(districts)).toBe(true);
       expect(districts.length).toBeGreaterThan(0);
 
@@ -60,17 +60,17 @@ describe('Region Functions', () => {
       expect(typeof district.name).toBe('string');
     });
 
-    test('should return empty array for invalid province code', () => {
-      const districts = getDistricts('invalid-code', 'any-code');
+    test('should return empty array for invalid province code', async () => {
+      const districts = await getDistricts('invalid-code', 'any-code');
       expect(Array.isArray(districts)).toBe(true);
       expect(districts.length).toBe(0);
     });
 
-    test('should return empty array for invalid regency code', () => {
+    test('should return empty array for invalid regency code', async () => {
       const provinces = getProvinces();
       const provinceCode = provinces[0].code;
 
-      const districts = getDistricts(provinceCode, 'invalid-code');
+      const districts = await getDistricts(provinceCode, 'invalid-code');
       expect(Array.isArray(districts)).toBe(true);
       expect(districts.length).toBe(0);
     });

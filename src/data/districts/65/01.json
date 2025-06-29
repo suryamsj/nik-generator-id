@@ -1,0 +1,42 @@
+[
+  {
+    "code": "01",
+    "name": "Tanjung Palas"
+  },
+  {
+    "code": "02",
+    "name": "Tanjung Palas Barat"
+  },
+  {
+    "code": "03",
+    "name": "Tanjung Palas Utara"
+  },
+  {
+    "code": "04",
+    "name": "Tanjung Palas Timur"
+  },
+  {
+    "code": "05",
+    "name": "Tanjung Selor"
+  },
+  {
+    "code": "06",
+    "name": "Tanjung Palas Tengah"
+  },
+  {
+    "code": "07",
+    "name": "Peso"
+  },
+  {
+    "code": "08",
+    "name": "Peso Hilir (Ilir)"
+  },
+  {
+    "code": "09",
+    "name": "Sekatak"
+  },
+  {
+    "code": "10",
+    "name": "Bunyu (Pulau Bunyu)"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "code": "01",
+    "name": "Kinal"
+  },
+  {
+    "code": "02",
+    "name": "Tanjung Kemuning"
+  },
+  {
+    "code": "03",
+    "name": "Kaur Utara"
+  },
+  {
+    "code": "04",
+    "name": "Kaur Tengah"
+  },
+  {
+    "code": "05",
+    "name": "Kaur Selatan"
+  },
+  {
+    "code": "06",
+    "name": "Maje"
+  },
+  {
+    "code": "07",
+    "name": "Nasal"
+  },
+  {
+    "code": "08",
+    "name": "Semidang Gumay / Gumai"
+  },
+  {
+    "code": "09",
+    "name": "Kelam Tengah"
+  },
+  {
+    "code": "10",
+    "name": "Luas"
+  },
+  {
+    "code": "11",
+    "name": "Muara Sahung"
+  },
+  {
+    "code": "12",
+    "name": "Tetap (Muara Tetap)"
+  },
+  {
+    "code": "13",
+    "name": "Lungkang Kule"
+  },
+  {
+    "code": "14",
+    "name": "Padang Guci Hilir"
+  },
+  {
+    "code": "15",
+    "name": "Padang Guci Hulu"
+  }
+]

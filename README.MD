@@ -19,6 +19,7 @@ npm install nik-generator-id
 ```javascript
 import {
   generateNik,
+  generateNikSync,
   getProvinces,
   getRegencies,
   getDistricts,
@@ -30,6 +31,7 @@ import {
 ```javascript
 const {
   generateNik,
+  generateNikSync,
   getProvinces,
   getRegencies,
   getDistricts,
@@ -40,7 +42,7 @@ const {
 
 ### `generateNik(options)`
 
-Generates a random or customized NIK.
+Generates a random or customized NIK asynchronously with accurate regional data.
 
 #### Parameters
 
@@ -54,26 +56,83 @@ Generates a random or customized NIK.
 
 #### Returns
 
-- `string`: A 16-digit NIK
+- `Promise<string>`: A Promise that resolves to a 16-digit NIK
 
 #### Example
 
 ```javascript
 // Generate a completely random NIK
-const randomNik = generateNik();
+generateNik().then((randomNik) => {
+  console.log(randomNik); // e.g., 3273081505900001
+});
+
+// Generate a NIK for a male individual
+generateNik({ gender: "male" }).then((maleNik) => {
+  console.log(maleNik);
+});
+
+// Generate a NIK for a female born on January 15, 1990
+generateNik({
+  gender: "female",
+  birthDate: new Date(1990, 0, 15),
+}).then((femaleNik) => {
+  console.log(femaleNik);
+});
+
+// Generate a NIK for a specific location
+generateNik({
+  provinceCode: "32", // West Java
+  regencyCode: "73", // Bandung City
+  districtCode: "08", // Specific district in Bandung City
+}).then((specificNik) => {
+  console.log(specificNik);
+});
+
+// Using async/await
+async function generateSampleNik() {
+  const nik = await generateNik({ gender: "male" });
+  console.log(nik);
+}
+```
+
+---
+
+### `generateNikSync(options)`
+
+Generates a random or customized NIK synchronously. This function is faster but uses random values for regency and district codes if not specified.
+
+#### Parameters
+
+- `options` (optional): An object with the following fields:
+
+  - `gender`: `'male'` or `'female'` (optional, default: random)
+  - `birthDate`: `Date` object representing the date of birth (optional, default: random between 1990–2025)
+  - `provinceCode`: `string` representing the province code (optional, default: random)
+  - `regencyCode`: `string` representing the regency/city code (optional, default: random 01-99)
+  - `districtCode`: `string` representing the district code (optional, default: random 01-99)
+
+#### Returns
+
+- `string`: A 16-digit NIK
+
+#### Example
+
+```javascript
+// Generate a completely random NIK synchronously
+const randomNik = generateNikSync();
 console.log(randomNik); // e.g., 3273081505900001
 
 // Generate a NIK for a male individual
-const maleNik = generateNik({ gender: "male" });
+const maleNik = generateNikSync({ gender: "male" });
 
 // Generate a NIK for a female born on January 15, 1990
-const femaleNik = generateNik({
+const femaleNik = generateNikSync({
   gender: "female",
   birthDate: new Date(1990, 0, 15),
 });
 
 // Generate a NIK for a specific location
-const specificNik = generateNik({
+const specificNik = generateNikSync({
   provinceCode: "32", // West Java
   regencyCode: "73", // Bandung City
   districtCode: "08", // Specific district in Bandung City
@@ -110,14 +169,23 @@ Returns a list of regencies or cities within a specified province.
 
 #### Returns
 
-- `Array<Object>`: Each object contains a `code` and `name` property.
+- `Promise<Array<Object>>`: A Promise that resolves to an array of objects, each containing a `code` and `name` property.
 
 #### Example
 
 ```javascript
-const regencies = getRegencies("11"); // Aceh
-console.log(regencies);
-// Output: [{ code: '01', name: 'Aceh Selatan Regency' }, { code: '02', name: 'Aceh Tenggara Regency' }, ...]
+// Using Promises
+getRegencies("11").then((regencies) => {
+  // Aceh
+  console.log(regencies);
+  // Output: [{ code: '01', name: 'Aceh Selatan Regency' }, { code: '02', name: 'Aceh Tenggara Regency' }, ...]
+});
+
+// Using async/await
+async function getAcehRegencies() {
+  const regencies = await getRegencies("11"); // Aceh
+  console.log(regencies);
+}
 ```
 
 ---
@@ -133,14 +201,23 @@ Returns a list of districts within a specified regency or city.
 
 #### Returns
 
-- `Array<Object>`: Each object contains a `code` and `name` property.
+- `Promise<Array<Object>>`: A Promise that resolves to an array of objects, each containing a `code` and `name` property.
 
 #### Example
 
 ```javascript
-const districts = getDistricts("11", "01"); // Aceh Selatan Regency
-console.log(districts);
-// Output: [{ code: '01', name: 'Bakongan' }, { code: '02', name: 'Kluet Utara' }, ...]
+// Using Promises
+getDistricts("11", "01").then((districts) => {
+  // Aceh Selatan Regency
+  console.log(districts);
+  // Output: [{ code: '01', name: 'Bakongan' }, { code: '02', name: 'Kluet Utara' }, ...]
+});
+
+// Using async/await
+async function getAcehSelatanDistricts() {
+  const districts = await getDistricts("11", "01"); // Aceh Selatan Regency
+  console.log(districts);
+}
 ```
 
 ---
@@ -170,6 +247,8 @@ Where:
 ## Notes
 
 - This package uses comprehensive regional data based on official Indonesian administrative divisions.
+- The asynchronous `generateNik` function loads regional data dynamically for accurate NIK generation.
+- The synchronous `generateNikSync` function is faster but may use random values for regency and district codes if not specified.
 - All generated NIKs are for **development and testing purposes only**; they are not valid for official use.
 
 ---

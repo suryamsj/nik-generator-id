@@ -1,0 +1,82 @@
+[
+  {
+    "code": "01",
+    "name": "Matan Hilir Utara"
+  },
+  {
+    "code": "02",
+    "name": "Marau"
+  },
+  {
+    "code": "03",
+    "name": "Manis Mata"
+  },
+  {
+    "code": "04",
+    "name": "Kendawangan"
+  },
+  {
+    "code": "05",
+    "name": "Sandai"
+  },
+  {
+    "code": "07",
+    "name": "Sungai Laur"
+  },
+  {
+    "code": "08",
+    "name": "Simpang Hulu"
+  },
+  {
+    "code": "11",
+    "name": "Nanga Tayap"
+  },
+  {
+    "code": "12",
+    "name": "Matan Hilir Selatan"
+  },
+  {
+    "code": "13",
+    "name": "Tumbang Titi"
+  },
+  {
+    "code": "14",
+    "name": "Jelai Hulu"
+  },
+  {
+    "code": "16",
+    "name": "Delta Pawan"
+  },
+  {
+    "code": "17",
+    "name": "Muara Pawan"
+  },
+  {
+    "code": "18",
+    "name": "Benua Kayong"
+  },
+  {
+    "code": "19",
+    "name": "Hulu Sungai"
+  },
+  {
+    "code": "20",
+    "name": "Simpang Dua"
+  },
+  {
+    "code": "21",
+    "name": "Air Upas"
+  },
+  {
+    "code": "22",
+    "name": "Singkup"
+  },
+  {
+    "code": "24",
+    "name": "Pemahan"
+  },
+  {
+    "code": "25",
+    "name": "Sungai Melayu Rayak"
+  }
+]

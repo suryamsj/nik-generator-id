@@ -1,0 +1,50 @@
+[
+  {
+    "code": "01",
+    "name": "Malaka Tengah"
+  },
+  {
+    "code": "02",
+    "name": "Malaka Barat"
+  },
+  {
+    "code": "03",
+    "name": "Wewiku"
+  },
+  {
+    "code": "04",
+    "name": "Weliman"
+  },
+  {
+    "code": "05",
+    "name": "Rinhat"
+  },
+  {
+    "code": "06",
+    "name": "Io Kufeu"
+  },
+  {
+    "code": "07",
+    "name": "Sasitamean"
+  },
+  {
+    "code": "08",
+    "name": "Laenmanen"
+  },
+  {
+    "code": "09",
+    "name": "Malaka Timur"
+  },
+  {
+    "code": "10",
+    "name": "Kobalima Timur"
+  },
+  {
+    "code": "11",
+    "name": "Kobalima"
+  },
+  {
+    "code": "12",
+    "name": "Botin Leobele"
+  }
+]

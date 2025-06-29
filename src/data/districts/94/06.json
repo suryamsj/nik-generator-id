@@ -1,0 +1,42 @@
+[
+  {
+    "code": "01",
+    "name": "Kamu"
+  },
+  {
+    "code": "02",
+    "name": "Mapia"
+  },
+  {
+    "code": "03",
+    "name": "Piyaiye"
+  },
+  {
+    "code": "04",
+    "name": "Kamu Utara"
+  },
+  {
+    "code": "05",
+    "name": "Sukikai Selatan"
+  },
+  {
+    "code": "06",
+    "name": "Mapia Barat"
+  },
+  {
+    "code": "07",
+    "name": "Kamu Selatan"
+  },
+  {
+    "code": "08",
+    "name": "Kamu Timur"
+  },
+  {
+    "code": "09",
+    "name": "Mapia Tengah"
+  },
+  {
+    "code": "10",
+    "name": "Dogiyai"
+  }
+]

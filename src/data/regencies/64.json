@@ -1,0 +1,42 @@
+[
+  {
+    "code": "01",
+    "name": "Paser, Kabupaten"
+  },
+  {
+    "code": "02",
+    "name": "Kutai Kartanegara, Kabupaten"
+  },
+  {
+    "code": "03",
+    "name": "Berau, Kabupaten"
+  },
+  {
+    "code": "07",
+    "name": "Kutai Barat, Kabupaten"
+  },
+  {
+    "code": "08",
+    "name": "Kutai Timur, Kabupaten"
+  },
+  {
+    "code": "09",
+    "name": "Penajam Paser Utara, Kabupaten"
+  },
+  {
+    "code": "11",
+    "name": "Mahakam Ulu, Kabupaten"
+  },
+  {
+    "code": "71",
+    "name": "Balikpapan, Kota"
+  },
+  {
+    "code": "72",
+    "name": "Samarinda, Kota"
+  },
+  {
+    "code": "74",
+    "name": "Bontang, Kota"
+  }
+]

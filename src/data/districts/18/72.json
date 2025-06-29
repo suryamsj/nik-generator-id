@@ -1,0 +1,22 @@
+[
+  {
+    "code": "01",
+    "name": "Metro Pusat"
+  },
+  {
+    "code": "02",
+    "name": "Metro Utara"
+  },
+  {
+    "code": "03",
+    "name": "Metro Barat"
+  },
+  {
+    "code": "04",
+    "name": "Metro Timur"
+  },
+  {
+    "code": "05",
+    "name": "Metro Selatan"
+  }
+]

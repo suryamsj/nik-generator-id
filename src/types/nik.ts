@@ -28,3 +28,12 @@ export interface RegionData {
   name: string;
 }
 
+export interface RegencyCache {
+  [provinceCode: string]: RegionData[];
+}
+
+export interface DistrictCache {
+  [provinceCode: string]: {
+    [regencyCode: string]: RegionData[];
+  };
+}

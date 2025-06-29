@@ -1,0 +1,34 @@
+[
+  {
+    "code": "01",
+    "name": "Sungai Penuh"
+  },
+  {
+    "code": "02",
+    "name": "Pesisir Bukit"
+  },
+  {
+    "code": "03",
+    "name": "Hamparan Rawang"
+  },
+  {
+    "code": "04",
+    "name": "Tanah Kampung"
+  },
+  {
+    "code": "05",
+    "name": "Kumun Debai"
+  },
+  {
+    "code": "06",
+    "name": "Pondok Tinggi"
+  },
+  {
+    "code": "07",
+    "name": "Koto Baru"
+  },
+  {
+    "code": "08",
+    "name": "Sungai Bungkal"
+  }
+]

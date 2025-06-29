@@ -1,0 +1,42 @@
+[
+  {
+    "code": "01",
+    "name": "Siau Timur"
+  },
+  {
+    "code": "02",
+    "name": "Siau Barat"
+  },
+  {
+    "code": "03",
+    "name": "Tagulandang"
+  },
+  {
+    "code": "04",
+    "name": "Siau Timur Selatan"
+  },
+  {
+    "code": "05",
+    "name": "Siau Barat Selatan"
+  },
+  {
+    "code": "06",
+    "name": "Tagulandang Utara"
+  },
+  {
+    "code": "07",
+    "name": "Biaro"
+  },
+  {
+    "code": "08",
+    "name": "Siau Barat Utara"
+  },
+  {
+    "code": "09",
+    "name": "Siau Tengah"
+  },
+  {
+    "code": "10",
+    "name": "Tagulandang Selatan"
+  }
+]

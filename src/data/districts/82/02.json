@@ -1,0 +1,42 @@
+[
+  {
+    "code": "01",
+    "name": "Weda"
+  },
+  {
+    "code": "02",
+    "name": "Patani"
+  },
+  {
+    "code": "03",
+    "name": "Pulau Gebe"
+  },
+  {
+    "code": "04",
+    "name": "Weda Utara"
+  },
+  {
+    "code": "05",
+    "name": "Weda Selatan"
+  },
+  {
+    "code": "06",
+    "name": "Patani Utara"
+  },
+  {
+    "code": "07",
+    "name": "Weda Tengah"
+  },
+  {
+    "code": "08",
+    "name": "Patani Barat"
+  },
+  {
+    "code": "09",
+    "name": "Weda Timur"
+  },
+  {
+    "code": "10",
+    "name": "Patani Timur"
+  }
+]

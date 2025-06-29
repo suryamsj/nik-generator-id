@@ -1,0 +1,30 @@
+[
+  {
+    "code": "01",
+    "name": "Wawonii Barat"
+  },
+  {
+    "code": "02",
+    "name": "Wawonii Utara"
+  },
+  {
+    "code": "03",
+    "name": "Wawonii Timur Laut"
+  },
+  {
+    "code": "04",
+    "name": "Wawonii Timur"
+  },
+  {
+    "code": "05",
+    "name": "Wawonii Tenggara"
+  },
+  {
+    "code": "06",
+    "name": "Wawonii Selatan"
+  },
+  {
+    "code": "07",
+    "name": "Wawonii Tengah"
+  }
+]

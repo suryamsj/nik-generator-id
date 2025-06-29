@@ -1,0 +1,78 @@
+[
+  {
+    "code": "01",
+    "name": "Poso Kota"
+  },
+  {
+    "code": "02",
+    "name": "Poso Pesisir"
+  },
+  {
+    "code": "03",
+    "name": "Lage"
+  },
+  {
+    "code": "04",
+    "name": "Pamona Puselemba"
+  },
+  {
+    "code": "05",
+    "name": "Pamona Timur"
+  },
+  {
+    "code": "06",
+    "name": "Pamona Selatan"
+  },
+  {
+    "code": "07",
+    "name": "Lore Utara"
+  },
+  {
+    "code": "08",
+    "name": "Lore Tengah"
+  },
+  {
+    "code": "09",
+    "name": "Lore Selatan"
+  },
+  {
+    "code": "18",
+    "name": "Poso Pesisir Utara"
+  },
+  {
+    "code": "19",
+    "name": "Poso Pesisir Selatan"
+  },
+  {
+    "code": "20",
+    "name": "Pamona Barat"
+  },
+  {
+    "code": "21",
+    "name": "Poso Kota Selatan"
+  },
+  {
+    "code": "22",
+    "name": "Poso Kota Utara"
+  },
+  {
+    "code": "23",
+    "name": "Lore Barat"
+  },
+  {
+    "code": "24",
+    "name": "Lore Timur"
+  },
+  {
+    "code": "25",
+    "name": "Lore Piore"
+  },
+  {
+    "code": "26",
+    "name": "Pamona Tenggara"
+  },
+  {
+    "code": "27",
+    "name": "Pamona Utara"
+  }
+]

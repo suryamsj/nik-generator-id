@@ -1,0 +1,50 @@
+[
+  {
+    "code": "01",
+    "name": "Ratahan"
+  },
+  {
+    "code": "02",
+    "name": "Pusomaen"
+  },
+  {
+    "code": "03",
+    "name": "Belang"
+  },
+  {
+    "code": "04",
+    "name": "Ratatotok"
+  },
+  {
+    "code": "05",
+    "name": "Tombatu"
+  },
+  {
+    "code": "06",
+    "name": "Touluaan"
+  },
+  {
+    "code": "07",
+    "name": "Touluaan Selatan"
+  },
+  {
+    "code": "08",
+    "name": "Silian Raya"
+  },
+  {
+    "code": "09",
+    "name": "Tombatu Timur"
+  },
+  {
+    "code": "10",
+    "name": "Tombatu Utara"
+  },
+  {
+    "code": "11",
+    "name": "Pasan"
+  },
+  {
+    "code": "12",
+    "name": "Ratahan Timur"
+  }
+]

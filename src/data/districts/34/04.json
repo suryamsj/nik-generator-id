@@ -1,0 +1,70 @@
+[
+  {
+    "code": "01",
+    "name": "Gamping"
+  },
+  {
+    "code": "02",
+    "name": "Godean"
+  },
+  {
+    "code": "03",
+    "name": "Moyudan"
+  },
+  {
+    "code": "04",
+    "name": "Minggir"
+  },
+  {
+    "code": "05",
+    "name": "Seyegan"
+  },
+  {
+    "code": "06",
+    "name": "Mlati"
+  },
+  {
+    "code": "07",
+    "name": "Depok"
+  },
+  {
+    "code": "08",
+    "name": "Berbah"
+  },
+  {
+    "code": "09",
+    "name": "Prambanan"
+  },
+  {
+    "code": "10",
+    "name": "Kalasan"
+  },
+  {
+    "code": "11",
+    "name": "Ngemplak"
+  },
+  {
+    "code": "12",
+    "name": "Ngaglik"
+  },
+  {
+    "code": "13",
+    "name": "Sleman"
+  },
+  {
+    "code": "14",
+    "name": "Tempel"
+  },
+  {
+    "code": "15",
+    "name": "Turi"
+  },
+  {
+    "code": "16",
+    "name": "Pakem"
+  },
+  {
+    "code": "17",
+    "name": "Cangkringan"
+  }
+]

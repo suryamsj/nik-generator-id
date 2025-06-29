@@ -1,0 +1,46 @@
+[
+  {
+    "code": "01",
+    "name": "Pesisir Tengah"
+  },
+  {
+    "code": "02",
+    "name": "Pesisir Selatan"
+  },
+  {
+    "code": "03",
+    "name": "Lemong"
+  },
+  {
+    "code": "04",
+    "name": "Pesisir Utara"
+  },
+  {
+    "code": "05",
+    "name": "Karya Penggawa"
+  },
+  {
+    "code": "06",
+    "name": "Pulau Pisang (Pulaupisang)"
+  },
+  {
+    "code": "07",
+    "name": "Way Krui"
+  },
+  {
+    "code": "08",
+    "name": "Krui Selatan"
+  },
+  {
+    "code": "09",
+    "name": "Ngambur"
+  },
+  {
+    "code": "10",
+    "name": "Ngaras (Bengkunat Belimbing)"
+  },
+  {
+    "code": "11",
+    "name": "Bangkunat (Bengkunat)"
+  }
+]
