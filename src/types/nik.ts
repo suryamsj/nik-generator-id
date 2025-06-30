@@ -37,3 +37,13 @@ export interface DistrictCache {
     [regencyCode: string]: RegionData[];
   };
 }
+
+export interface ParsedNik {
+  provinceCode: string;
+  regencyCode: string;
+  districtCode: string;
+  birthDate: Date | null;
+  gender: 'male' | 'female';
+  serialNumber: string;
+  isValid: boolean;
+}

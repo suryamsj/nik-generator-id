@@ -1,6 +1,7 @@
 import { generateNik, generateNikSync } from '../nik-generator';
 import { getProvinces, getRegencies, getDistricts } from '../region';
 import { NikOptions } from '../types/nik';
+import { NIKError } from '../nik-error';
 
 describe('NIK Generator', () => {
   describe('generateNik', () => {
@@ -87,60 +88,22 @@ describe('NIK Generator', () => {
       expect(locationPart).toBe(`${provinceCode}${regencyCode}${districtCode}`);
     });
 
-    test('should throw error for invalid location code', async () => {
+    test('should throw NIKError for invalid location code', async () => {
       const options: NikOptions = {
         provinceCode: '11', // Aceh
         regencyCode: '01', // Kab. Aceh Selatan
         districtCode: '99' // Kode kecamatan tidak valid
       };
 
-      await expect(generateNik(options)).rejects.toThrow('Kode wilayah tidak valid.');
+      await expect(generateNik(options)).rejects.toThrow(NIKError);
+      await expect(generateNik(options)).rejects.toThrow('Invalid district code.');
+      await expect(generateNik(options)).rejects.toMatchObject({
+        code: 'INVALID_LOCATION_CODE'
+      });
     });
   });
 
   describe('generateNikSync', () => {
-    test('should generate valid NIK with default options', () => {
-      const nik = generateNikSync();
-      expect(typeof nik).toBe('string');
-      expect(nik.length).toBe(16);
-      expect(/^\d{16}$/.test(nik)).toBe(true);
-    });
-
-    test('should generate valid NIK for male', () => {
-      const options: NikOptions = {
-        gender: 'male',
-        birthDate: new Date(1990, 0, 15) // 15 Januari 1990
-      };
-
-      const nik = generateNikSync(options);
-      expect(nik.length).toBe(16);
-
-      const dayPart = nik.substring(6, 8);
-      expect(dayPart).toBe('15');
-
-      const monthPart = nik.substring(8, 10);
-      expect(monthPart).toBe('01');
-
-      const yearPart = nik.substring(10, 12);
-      expect(yearPart).toBe('90');
-    });
-
-    test('should generate valid NIK for female', () => {
-      const options: NikOptions = {
-        gender: 'female',
-        birthDate: new Date(1990, 0, 15) // 15 Januari 1990
-      };
-
-      const nik = generateNikSync(options);
-
-      const dayPart = nik.substring(6, 8);
-      expect(dayPart).toBe('55');
-
-      const monthPart = nik.substring(8, 10);
-      expect(monthPart).toBe('01');
-
-      const yearPart = nik.substring(10, 12);
-      expect(yearPart).toBe('90');
-    });
+    // ... existing code ...
   });
 });

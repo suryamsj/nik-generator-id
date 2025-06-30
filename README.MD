@@ -4,7 +4,30 @@ A JavaScript/TypeScript package for generating random or customized Indonesian N
 
 ## Description
 
-**NIK Generator ID** is a utility package that generates random or user-defined Indonesian National Identity Numbers (NIKs). It leverages comprehensive regional data—covering provinces, regencies/cities, and districts—to produce NIKs that conform to the official format.
+**NIK Generator ID** is a comprehensive utility package that provides complete functionality for Indonesian National Identity Numbers (NIKs). Beyond generation, it offers robust validation and parsing capabilities:
+
+### Core Features:
+
+1. **NIK Generation**: Generate random or user-defined NIKs using comprehensive regional data covering provinces, regencies/cities, and districts to produce NIKs that conform to the official format.
+
+2. **NIK Validation**: Validate existing NIKs against both format rules and actual regional data:
+
+   - **Asynchronous validation** (`validateNik`): Performs complete validation including format, date validity, and regional code verification against the official administrative database
+   - **Synchronous validation** (`validateNikSync`): Fast format validation that checks NIK structure, date validity, and province code existence
+
+3. **NIK Parsing**: Extract and interpret all components from a NIK string:
+
+   - Parse province, regency, and district codes
+   - Extract birth date with automatic gender detection (females have birth day + 40)
+   - Determine gender based on birth day encoding
+   - Extract serial number
+   - Validate date components and overall format
+
+4. **Regional Data Access**: Access comprehensive Indonesian administrative data including provinces, regencies/cities, and districts for accurate NIK generation and validation.
+
+5. **Error Handling**: Custom `NIKError` class with specific error codes for different validation and parsing scenarios.
+
+6. **TypeScript Support**: Built with TypeScript for enhanced type safety and developer experience.
 
 ## Installation
 
@@ -23,6 +46,7 @@ import {
   getProvinces,
   getRegencies,
   getDistricts,
+  NIKError,
 } from "nik-generator-id";
 ```
 
@@ -35,6 +59,7 @@ const {
   getProvinces,
   getRegencies,
   getDistricts,
+  NIKError,
 } = require("nik-generator-id");
 ```
 
@@ -57,6 +82,10 @@ Generates a random or customized NIK asynchronously with accurate regional data.
 #### Returns
 
 - `Promise<string>`: A Promise that resolves to a 16-digit NIK
+
+#### Throws
+
+- `NIKError`: Throws a custom error with code `INVALID_LOCATION_CODE` if the provided district code is invalid
 
 #### Example
 
@@ -88,10 +117,18 @@ generateNik({
   console.log(specificNik);
 });
 
-// Using async/await
+// Using async/await with error handling
 async function generateSampleNik() {
-  const nik = await generateNik({ gender: "male" });
-  console.log(nik);
+  try {
+    const nik = await generateNik({ gender: "male" });
+    console.log(nik);
+  } catch (error) {
+    if (error instanceof NIKError) {
+      console.error(`NIK Error: ${error.message} (Code: ${error.code})`);
+    } else {
+      console.error("Unexpected error:", error);
+    }
+  }
 }
 ```
 
@@ -141,6 +178,137 @@ const specificNik = generateNikSync({
 
 ---
 
+### `parseNik(nik)`
+
+Parses a NIK string and returns its components.
+
+#### Parameters
+
+- `nik`: `string` - The 16-digit NIK string to parse
+
+#### Returns
+
+- `ParsedNik`: An object containing the NIK components and validation status
+
+#### Throws
+
+- `NIKError`: Throws a custom error with code `DATE_PARSING_ERROR` if there's an error parsing the birth date
+
+#### Example
+
+```javascript
+// Parse a valid NIK
+const parsedNik = parseNik("3273081505900001");
+console.log(parsedNik);
+/* Output:
+{
+  provinceCode: '32',
+  regencyCode: '73',
+  districtCode: '08',
+  birthDate: 1990-05-15T00:00:00.000Z, // Date object
+  gender: 'male',
+  serialNumber: '0001',
+  isValid: true
+}
+*/
+
+// Parse a female NIK (note the day value > 40)
+const femaleParsedNik = parseNik("3273084505900002");
+console.log(femaleParsedNik.gender); // 'female'
+console.log(femaleParsedNik.birthDate); // 1990-05-05T00:00:00.000Z (day 45 - 40 = 5)
+
+// Parse an invalid NIK
+const invalidNik = parseNik("12345");
+console.log(invalidNik.isValid); // false
+
+// Error handling
+try {
+  const parsedNik = parseNik("3273089905900001"); // Invalid date (month 99)
+} catch (error) {
+  if (error instanceof NIKError) {
+    console.error(`NIK Error: ${error.message} (Code: ${error.code})`);
+    // Output: NIK Error: Error parsing birth date (Code: DATE_PARSING_ERROR)
+  }
+}
+```
+
+---
+
+### `validateNik(nik)`
+
+Validates a NIK string against format rules and regional data.
+
+#### Parameters
+
+- `nik`: `string` - The 16-digit NIK string to validate
+
+#### Returns
+
+- `Promise<boolean>`: Whether the NIK is valid
+
+#### Throws
+
+- `NIKError`: Throws a custom error with code `VALIDATION_ERROR` if there's an error during validation
+
+#### Example
+
+```javascript
+// Validate a NIK asynchronously
+validateNik("3273081505900001").then((isValid) => {
+  console.log(isValid); // true or false depending on if the NIK is valid
+});
+
+// Using async/await
+async function checkNik() {
+  try {
+    const isValid = await validateNik("3273081505900001");
+    console.log(`NIK is ${isValid ? "valid" : "invalid"}`);
+  } catch (error) {
+    if (error instanceof NIKError) {
+      console.error(`NIK Error: ${error.message} (Code: ${error.code})`);
+      // Possible output: NIK Error: Error validating NIK (Code: VALIDATION_ERROR)
+    }
+  }
+}
+
+// Validate a NIK with invalid regional codes
+validateNik("9999081505900001").then((isValid) => {
+  console.log(isValid); // false - province code 99 doesn't exist
+});
+```
+
+---
+
+### `validateNikSync(nik)`
+
+Validates a NIK string against format rules (synchronous version).
+
+#### Parameters
+
+- `nik`: `string` - The 16-digit NIK string to validate
+
+#### Returns
+
+- `boolean`: Whether the NIK has a valid format
+
+#### Example
+
+```javascript
+// Validate a NIK synchronously (only checks format and province code)
+const isValid = validateNikSync("3273081505900001");
+console.log(isValid); // true if format is valid and province exists
+
+// Validate an invalid NIK
+const isInvalidNikValid = validateNikSync("12345"); // too short
+console.log(isInvalidNikValid); // false
+
+// Validate a NIK with invalid province code
+const hasInvalidProvince = validateNikSync("9999081505900001");
+console.log(hasInvalidProvince); // false - province code 99 doesn't exist
+```
+
+---
+
 ### `getProvinces()`
 
 Returns a list of all provinces in Indonesia.
@@ -171,20 +339,40 @@ Returns a list of regencies or cities within a specified province.
 
 - `Promise<Array<Object>>`: A Promise that resolves to an array of objects, each containing a `code` and `name` property.
 
+#### Throws
+
+- `NIKError`: Throws a custom error with code `REGENCY_DATA_ERROR` if there's an error loading regency data
+
 #### Example
 
 ```javascript
-// Using Promises
-getRegencies("11").then((regencies) => {
-  // Aceh
-  console.log(regencies);
-  // Output: [{ code: '01', name: 'Aceh Selatan Regency' }, { code: '02', name: 'Aceh Tenggara Regency' }, ...]
-});
+// Using Promises with error handling
+getRegencies("11")
+  .then((regencies) => {
+    // Aceh
+    console.log(regencies);
+    // Output: [{ code: '01', name: 'Aceh Selatan Regency' }, { code: '02', name: 'Aceh Tenggara Regency' }, ...]
+  })
+  .catch((error) => {
+    if (error instanceof NIKError) {
+      console.error(`NIK Error: ${error.message} (Code: ${error.code})`);
+    } else {
+      console.error("Unexpected error:", error);
+    }
+  });
 
-// Using async/await
+// Using async/await with error handling
 async function getAcehRegencies() {
-  const regencies = await getRegencies("11"); // Aceh
-  console.log(regencies);
+  try {
+    const regencies = await getRegencies("11"); // Aceh
+    console.log(regencies);
+  } catch (error) {
+    if (error instanceof NIKError) {
+      console.error(`NIK Error: ${error.message} (Code: ${error.code})`);
+    } else {
+      console.error("Unexpected error:", error);
+    }
+  }
 }
 ```
 
@@ -203,20 +391,80 @@ Returns a list of districts within a specified regency or city.
 
 - `Promise<Array<Object>>`: A Promise that resolves to an array of objects, each containing a `code` and `name` property.
 
+#### Throws
+
+- `NIKError`: Throws a custom error with code `DISTRICT_DATA_ERROR` if there's an error loading district data
+
 #### Example
 
 ```javascript
-// Using Promises
-getDistricts("11", "01").then((districts) => {
-  // Aceh Selatan Regency
-  console.log(districts);
-  // Output: [{ code: '01', name: 'Bakongan' }, { code: '02', name: 'Kluet Utara' }, ...]
-});
+// Using Promises with error handling
+getDistricts("11", "01")
+  .then((districts) => {
+    // Aceh Selatan Regency
+    console.log(districts);
+    // Output: [{ code: '01', name: 'Bakongan' }, { code: '02', name: 'Kluet Utara' }, ...]
+  })
+  .catch((error) => {
+    if (error instanceof NIKError) {
+      console.error(`NIK Error: ${error.message} (Code: ${error.code})`);
+    } else {
+      console.error("Unexpected error:", error);
+    }
+  });
 
-// Using async/await
+// Using async/await with error handling
 async function getAcehSelatanDistricts() {
-  const districts = await getDistricts("11", "01"); // Aceh Selatan Regency
-  console.log(districts);
+  try {
+    const districts = await getDistricts("11", "01"); // Aceh Selatan Regency
+    console.log(districts);
+  } catch (error) {
+    if (error instanceof NIKError) {
+      console.error(`NIK Error: ${error.message} (Code: ${error.code})`);
+    } else {
+      console.error("Unexpected error:", error);
+    }
+  }
+}
+```
+
+---
+
+### `NIKError`
+
+A custom error class for NIK-related errors that allows for specific error identification.
+
+#### Properties
+
+- `message`: `string` - The error message
+- `code`: `string` - Optional error code for more specific identification
+
+#### Error Codes
+
+- `INVALID_LOCATION_CODE`: Thrown when an invalid district code is provided
+- `DATE_PARSING_ERROR`: Thrown when there's an error parsing a birth date
+- `VALIDATION_ERROR`: Thrown when there's an error validating a NIK
+- `REGENCY_DATA_ERROR`: Thrown when there's an error loading regency data
+- `DISTRICT_DATA_ERROR`: Thrown when there's an error loading district data
+
+#### Example
+
+```javascript
+try {
+  // Some operation that might throw NIKError
+  const nik = await generateNik({ districtCode: "99" });
+} catch (error) {
+  if (error instanceof NIKError) {
+    console.error(`NIK Error: ${error.message}`);
+    console.error(`Error Code: ${error.code}`);
+
+    // Handle specific error codes
+    if (error.code === "INVALID_LOCATION_CODE") {
+      console.error("Please provide a valid district code.");
+    }
+  } else {
+    console.error("Unexpected error:", error);
+  }
 }
 ```
 
@@ -250,6 +498,7 @@ Where:
 - The asynchronous `generateNik` function loads regional data dynamically for accurate NIK generation.
 - The synchronous `generateNikSync` function is faster but may use random values for regency and district codes if not specified.
 - All generated NIKs are for **development and testing purposes only**; they are not valid for official use.
+- The package includes a custom `NIKError` class for better error handling and identification.
 
 ---
 

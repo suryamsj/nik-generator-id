@@ -1,4 +1,5 @@
 import { getProvinces, getRegencies, getDistricts } from '../region';
+import { NIKError } from '../nik-error';
 
 describe('Region Functions', () => {
   describe('getProvinces', () => {
@@ -33,10 +34,12 @@ describe('Region Functions', () => {
       expect(typeof regency.name).toBe('string');
     });
 
-    test('should return empty array for invalid province code', async () => {
-      const regencies = await getRegencies('invalid-code');
-      expect(Array.isArray(regencies)).toBe(true);
-      expect(regencies.length).toBe(0);
+    test('should throw NIKError for invalid province code', async () => {
+      await expect(getRegencies('invalid-code')).rejects.toThrow(NIKError);
+      await expect(getRegencies('invalid-code')).rejects.toThrow('Failed to load regency data');
+      await expect(getRegencies('invalid-code')).rejects.toMatchObject({
+        code: 'REGENCY_DATA_ERROR'
+      });
     });
   });
 
@@ -60,19 +63,23 @@ describe('Region Functions', () => {
       expect(typeof district.name).toBe('string');
     });
 
-    test('should return empty array for invalid province code', async () => {
-      const districts = await getDistricts('invalid-code', 'any-code');
-      expect(Array.isArray(districts)).toBe(true);
-      expect(districts.length).toBe(0);
+    test('should throw NIKError for invalid province code', async () => {
+      await expect(getDistricts('invalid-code', 'any-code')).rejects.toThrow(NIKError);
+      await expect(getDistricts('invalid-code', 'any-code')).rejects.toThrow('Failed to load district data');
+      await expect(getDistricts('invalid-code', 'any-code')).rejects.toMatchObject({
+        code: 'DISTRICT_DATA_ERROR'
+      });
     });
 
-    test('should return empty array for invalid regency code', async () => {
+    test('should throw NIKError for invalid regency code', async () => {
       const provinces = getProvinces();
       const provinceCode = provinces[0].code;
 
-      const districts = await getDistricts(provinceCode, 'invalid-code');
-      expect(Array.isArray(districts)).toBe(true);
-      expect(districts.length).toBe(0);
+      await expect(getDistricts(provinceCode, 'invalid-code')).rejects.toThrow(NIKError);
+      await expect(getDistricts(provinceCode, 'invalid-code')).rejects.toThrow('Failed to load district data');
+      await expect(getDistricts(provinceCode, 'invalid-code')).rejects.toMatchObject({
+        code: 'DISTRICT_DATA_ERROR'
+      });
     });
   });
 });
