@@ -1,7 +1,7 @@
-import { generateNik, generateNikSync } from '../nik-generator';
-import { getProvinces, getRegencies, getDistricts } from '../region';
-import { NikOptions } from '../types/nik';
-import { NIKError } from '../nik-error';
+import { generateNik } from '../nik/generator.js';
+import { getProvinces, getRegencies, getDistricts } from '../region/index.js';
+import { NikOptions } from '../types/public.js';
+import { NIKError } from '../errors/nik-error.js';
 
 describe('NIK Generator', () => {
   describe('generateNik', () => {

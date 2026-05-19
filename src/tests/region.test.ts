@@ -1,5 +1,5 @@
-import { getProvinces, getRegencies, getDistricts } from '../region';
-import { NIKError } from '../nik-error';
+import { getProvinces, getRegencies, getDistricts } from '../region/index.js';
+import { NIKError } from '../errors/nik-error.js';
 
 describe('Region Functions', () => {
   describe('getProvinces', () => {

@@ -1,12 +1,9 @@
-import {
-  parseNik,
-  validateNik,
-  validateNikSync,
-  generateNik,
-} from "../nik-generator";
-import { getProvinces, getRegencies, getDistricts } from "../region";
-import { NIKError } from "../nik-error";
-import { ParsedNik } from "../types/nik";
+import { generateNik } from "../nik/generator.js";
+import { parseNik } from "../nik/parser.js";
+import { validateNik, validateNikSync } from "../nik/validator.js";
+import { getProvinces, getRegencies, getDistricts } from "../region/index.js";
+import { NIKError } from "../errors/nik-error.js";
+import { ParsedNik } from "../types/public.js";
 
 describe("NIK Validation and Parsing", () => {
   describe("parseNik", () => {

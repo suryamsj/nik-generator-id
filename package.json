@@ -1,6 +1,6 @@
 {
   "name": "nik-generator-id",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "type": "module",
   "exports": {
     ".": {
@@ -16,9 +16,8 @@
   ],
   "scripts": {
     "prepare-data": "node script/split-data.js",
-    "build": "tsc && npm run copy-json-w",
-    "copy-json": "mkdir -p dist/data && cp src/data/provinces.json dist/data/ && cp -r src/data/regencies dist/data/ && cp -r src/data/districts dist/data/",
-    "copy-json-w": "xcopy src\\data\\provinces.json dist\\data\\ /Y && xcopy src\\data\\regencies\\*.* dist\\data\\regencies\\ /E /I /Y && xcopy src\\data\\districts\\*.* dist\\data\\districts\\ /E /I /Y",
+    "build": "tsup && node script/copy-data.js",
+    "typecheck": "tsc --noEmit",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [
@@ -37,6 +36,7 @@
     "@types/jest": "^30.0.0",
     "jest": "^30.0.3",
     "ts-jest": "^29.4.0",
+    "tsup": "^8.5.1",
     "typescript": "^5.8.3"
   }
 }

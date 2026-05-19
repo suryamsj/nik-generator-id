@@ -43,6 +43,9 @@ npm install nik-generator-id
 import {
   generateNik,
   generateNikSync,
+  parseNik,
+  validateNik,
+  validateNikSync,
   getProvinces,
   getRegencies,
   getDistricts,
@@ -56,6 +59,9 @@ import {
 const {
   generateNik,
   generateNikSync,
+  parseNik,
+  validateNik,
+  validateNikSync,
   getProvinces,
   getRegencies,
   getDistricts,
@@ -499,6 +505,53 @@ Where:
 - The synchronous `generateNikSync` function is faster but may use random values for regency and district codes if not specified.
 - All generated NIKs are for **development and testing purposes only**; they are not valid for official use.
 - The package includes a custom `NIKError` class for better error handling and identification.
+- Requires **Node.js 16** or later.
+
+---
+
+## Development
+
+### Prerequisites
+
+- Node.js 16+
+- npm
+
+### Scripts
+
+```bash
+# Install dependencies
+npm install
+
+# Build (outputs ESM + CJS + type declarations to dist/)
+npm run build
+
+# Type check without emitting files
+npm run typecheck
+
+# Run tests
+npm test
+
+# Regenerate regional data from the raw master file
+npm run prepare-data
+```
+
+### Project Structure
+
+```
+src/
+├── index.ts           # Public barrel export
+├── errors/            # NIKError class
+├── nik/               # Generator, parser, validator
+├── region/            # Region data loader with caching
+├── types/             # TypeScript interfaces
+├── utils/             # Pure helper functions
+├── data/              # Regional JSON data files
+└── tests/             # Test suite
+```
+
+The build uses [tsup](https://tsup.egoist.dev) to produce dual ESM (`dist/*.js`) and CJS (`dist/*.cjs`) outputs alongside TypeScript declaration files. Regional JSON data is copied to `dist/data/` as part of the build step.
+
+To update the regional data, edit `src/data/indonesia.json` then run `npm run prepare-data` to regenerate the split files before rebuilding.
 
 ---
 
@@ -516,4 +569,4 @@ Contributions are welcome! Please open an issue or submit a pull request on the 
 
 ## Author
 
-Developed by [Muhammad Surya J](https://suryamsj.my.id)
+Developed by [Muhammad Surya J](https://suryamsj.dev)
